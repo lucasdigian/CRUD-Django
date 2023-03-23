@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Hello World</h1>
+
+        <ul>
+        {% for carros in carros%}
+            <li>{{carros.id}} - {{carros.name}} 
+                <a href={% url 'editar' carros.id %}>Editar</a>
+                <a href={% url 'deletar' carros.id %}>Deletar</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <form action={% url 'salvar' %} method='POST' >
+            {% csrf_token %}
+            <input type='text' name='name' placeholder="Nome do carro">
+            <button type='submit'> SALVAR </button>
+        </form>
+
+        <script src="" async defer></script>
+    </body>
+</html>
